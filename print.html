@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Titrasi</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.flat.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <link href="css/theme.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body role="document">
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Titrasi Obat</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container-fluid" role="main">
+      <div class="row">&nbsp;</div>
+        <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+      <div class="row">
+        <div class="col-xs-12">
+            <div class="form-group">
+              <p><b>Nama Pasien:</b> <span id="patient_name"></span></p>
+              <p><b>Berat Badan:</b> <span id="patient_weight"></span>(kg)</p>
+            </div>
+            <!-- <button type="button" class="btn btn-default" id="btn_patient_calculate">Refresh</button> -->
+        </div>
+      </div>
+
+      <div class="row show-grid" role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#tab-pherdipin" role="tab" data-toggle="tab">Pherdipin</a></li>
+          <li role="presentation"><a href="#tab-dobutamin" role="tab" data-toggle="tab">Dobutamin</a></li>
+          <li role="presentation"><a href="#tab-dopamin" role="tab" data-toggle="tab">Dopamin</a></li>
+        </ul>
+        
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active" id="tab-pherdipin">
+            <table class="table table-striped" id="table_print_pherdipin">
+              <thead>
+                <tr>
+                  <th class="col-xs-4">
+                    <button class="btn btn-sm" type="button" id="btn_takaran_pherdipin" data-toggle="modal" data-target="#modal-takaran" data-medname="pherdipin">
+                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Takaran
+                    </button>
+                  </th>
+                  <th colspan="2" class="text-center col-xs-8">CC/Jam</th>
+                </tr>
+                <tr>
+                  <th class="col-xs-4">Dosis (&micro;g)</th>
+                  <th class="col-xs-4">1 Amp</th>
+                  <th class="col-xs-4">2 Amp</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane fade in" id="tab-dobutamin">
+            <table class="table table-striped" id="table_print_dobutamin">
+              <thead>
+                <tr>
+                  <th class="col-xs-4">
+                    <button class="btn btn-sm" type="button" id="btn_takaran_dobutamin" data-toggle="modal" data-target="#modal-takaran" data-medname="dobutamin">
+                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Takaran
+                    </button>
+                  </th>
+                  <th colspan="2" class="text-center col-xs-8">CC/Jam</th>
+                </tr>
+                <tr>
+                  <th class="col-xs-4">Dosis (&micro;g)</th>
+                  <th class="col-xs-4">1 Amp</th>
+                  <th class="col-xs-4">2 Amp</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane fade in" id="tab-dopamin">
+            <table class="table table-striped" id="table_print_dopamin">
+              <thead>
+                <tr>
+                  <th class="col-xs-4">
+                    <button class="btn btn-sm" type="button" id="btn_takaran_dopamin" data-toggle="modal" data-target="#modal-takaran" data-medname="dopamin">
+                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Takaran
+                    </button>
+                  </th>
+                  <th colspan="2" class="text-center col-xs-8">CC/Jam</th>
+                </tr>
+                <tr>
+                  <th class="col-xs-4">Dosis (&micro;g)</th>
+                  <th class="col-xs-4">1 Amp</th>
+                  <th class="col-xs-4">2 Amp</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Modal Takaran -->
+        <div class="modal fade" id="modal-takaran" tabindex="-1" role="dialog" aria-labelledby="modal-takaranLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-uppercase" id="modal-takaranLabel"></h4>
+              </div>
+              <div class="modal-body">
+                <div id="err-msg" class="alert alert-warning alert-dismissible hide" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <small><strong>Warning!</strong> <span id="err-med"></span> tidak boleh kosong.</small>
+                </div>
+                <form>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <label for="recipient-name" class="control-label">Sediaan:</label>
+                      <input type="number" class="form-control input-sm" id="sediaan" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <label for="message-text" class="control-label">Pelarut:</label>
+                      <input type="number" class="form-control input-sm" id="pelarut" required>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btn-update-takaran">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End -->
+        
+      </div>
+      
+    </div> 
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
+</html>
