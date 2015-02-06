@@ -12,6 +12,8 @@ $(function(){
     var patient_name = $("#patient_name").val();
     var patient_weight = $("#patient_weight").val();
     
+    patient_weight = parseFloat(patient_weight);
+    
     localStorage.setItem("patient_name",patient_name);
     localStorage.setItem("patient_weight",patient_weight);
   });
@@ -41,29 +43,45 @@ $(function(){
     $('#pelarut').val(med_json.pelarut);
   });
   
+  $("#modal-takaran").on("hide.bs.modal", function(event) {
+    $("#sediaan,#pelarut").parent().removeClass("has-error");$("#err-msg").addClass("hide");
+  });
+  
+  /**** end ****/
+  
   $("#btn-update-takaran").click(function(){
     $("#sediaan,#pelarut").parent().removeClass("has-error");$("#err-msg").addClass("hide");
     var medname = $("#modal-takaranLabel").text();
     var sediaan = $("#sediaan").val();var obj;
     var pelarut = $("#pelarut").val();
     
+    pelarut = parseFloat(pelarut);
+    sediaan = parseFloat(sediaan);
+    
+    if (isNaN(sediaan) || isNaN(pelarut)) {
+      $("#sediaan,#pelarut").parent().addClass("has-error");
+      $("#err-med").text("Input harus angka");
+      $("#err-msg").removeClass("hide");
+      return false;
+    }
+    
     if ( (sediaan <= 0 || sediaan == "") && (pelarut <= 0 || pelarut == "") ) {
       $("#sediaan,#pelarut").parent().addClass("has-error");
-      $("#err-med").text("Sediaan dan Pelarut");
+      $("#err-med").text("Sediaan dan Pelarut tidak boleh kosong");
       $("#err-msg").removeClass("hide");
       return false;
     }
     
     if (sediaan <= 0 || sediaan == "") {
       $("#sediaan").parent().addClass("has-error");
-      $("#err-med").text("Sediaan");
+      $("#err-med").text("Sediaan tidak boleh kosong");
       $("#err-msg").removeClass("hide");
       return false;
     }
     
     if (pelarut <= 0 || pelarut == "") {
       $("#pelarut").parent().addClass("has-error");
-      $("#err-med").text("Pelarut");
+      $("#err-med").text("Pelarut tidak boleh kosong");
       $("#err-msg").removeClass("hide");
       return false;
     }
